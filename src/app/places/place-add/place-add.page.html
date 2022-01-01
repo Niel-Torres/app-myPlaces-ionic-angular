@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="secondary" >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/places"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add a new Place</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-content>
+          <ion-input type="text" placeholder="write a title" #title></ion-input>
+          <ion-input type="text" placeholder="http://image.com" #imageURL></ion-input>
+          <ion-button color="primary" (click)="saveNewPlace(title,imageURL)">Save</ion-button>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -18,7 +18,7 @@ export class PlaceDetailPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private placesService: PlacesService,
     private router: Router,
-    private alertController: AlertController
+    private alertCtrl: AlertController
 
   ) { }
 
@@ -31,29 +31,21 @@ export class PlaceDetailPage implements OnInit {
     });
   }
 
-  deletePlace(){
+  async deletePlace(){
     // this.placesService.deletePlace(this.place.id);
     // this.router.navigate(['/places']);
-    this.presentAlertConfirm();
-  }
 
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
+    const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
-      header: 'Borrar place',
-      message: 'Estás seguro de <strong>eliminar</strong> este lugar!!!',
+      header: 'Are you sure, you want delete it?',
+      message: 'Be careful',
       buttons: [
         {
           text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          id: 'cancel-button',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
+          role: 'cancel'
+        },
+        {
           text: 'Yes',
-          id: 'confirm-button',
           handler: () => {
             this.placesService.deletePlace(this.place.id);
             this.router.navigate(['/places']);
@@ -65,6 +57,7 @@ export class PlaceDetailPage implements OnInit {
 
     await alert.present();
   }
+
 
 
 }
